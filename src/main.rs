@@ -1,15 +1,14 @@
 #![feature(lang_items, core_intrinsics)]
 #![feature(start)]
 #![no_std]
-#![no_main]
 use core::intrinsics;
 
 // Pull in the system libc library for what crt0.o likely requires.
 extern crate libc;
 
 // Entry point for this program.
-#[no_mangle] // ensure that this symbol is called `main` in the output
-pub extern fn main(_argc: i32, _argv: *const *const u8) -> i32 {
+#[start]
+fn start(_argc: isize, _argv: *const *const u8) -> isize {
     0
 }
 
